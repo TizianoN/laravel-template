@@ -1,95 +1,6 @@
-<div align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a>
-<h1><strong style="color: #EF3B2D;">9 + BOOTSTRAP TEMPLATE</strong></h1></div>
+# REALIZZARE UNA CRUD
 
-# Laravel 9 + Bootstrap Template
-Questa repo template contiene una versione modificata del pacchetto `laravel/laravel`. Tale versione differisce nei seguenti punti:
-
-- `PostCSS` è stato rimosso
-- È stato installato `SASS`
-- È stato installato `Bootstrap`
-- La cartella `resources/css` è stata rimossa
-- È stata aggiunta la cartella `resources/scss` contenente il file `app.scss`
-- Il file `vite.config.js` è stato modificato al fine di includere i file `resources/scss/app.scss` e `resources/js/app.js` nella compilazione. Sono stati inoltre aggiunti gli alias per le cartelle `/resources/` e `node_modules/bootstrap`
-- Nella view `welcome`:
-    - Sono stati inclusi gli asset tramite direttiva `@vite`
-    - È stato rimosso lo stile preesistente
-    - È stato modificato il contenuto
-
-## About this template
-
-### Passi da effettuare per RIPRODURRE questo template
-1. Modificare il file `package.json`
-    - Aggiornare la versione del pacchetto `"vite"` alla versione `"^3.0.0"`
-    - Aggiornare la versione del pacchetto `"laravel-vite-plugin"` alla versione `"^0.6.0"`
-2. Eseguire il comando `npm remove postcss` per rimuovere PostCSS
-3. Eseguire il comando `npm i` per installare tutti i pacchetti di NPM (comprese le versioni aggiornate di `vite` e `laravel-vite-plugin`)
-4. Eseguire il comando `npm i --save-dev sass` per installare SASS
-5. Rinominare la cartella `css` che si trova nella cartella `resources/` in `scss`
-6. Rinominare il file `app.css` che si trova nella nuova cartella `resources/scss` in `app.scss`
-7. Modificare il file vite.config.js:
-    - Cambiare la sezione `laravel(...)` in:
-    ```
-        laravel({
-            input: [
-                'resources/scss/app.scss',
-                'resources/js/app.js'
-            ],
-            refresh: true
-        })
-    ```
-    per includere i file `resources/scss/app.scss` e `resources/js/app.js` nella compilazione (`npm run dev`/`build`)
-    - Aggiungere la sezione:
-    ```
-        resolve: {
-            alias: {
-                '~resources': '/resources/',
-            }
-        },
-    ```
-    dopo la sezione `plugins: [...]` per creare un alias della cartella `/resources/` (evitandoci di doverla richiamare in questo modo tutte le volte)
-8. Aggiungere la riga import `'~resources/scss/app.scss';` nel file `resources/js/app.js` per importare tramite JS il file SCSS principale
-9. Aggiungere la direttiva `@vite('resources/js/app.js')` nella sezione `<head>` del file `resources/views/welcome.blade.php` per includere gli asset nella view
-10. Aggiungere le righe:
-    ```
-        import.meta.glob([
-            '../img/**'
-        ]);
-    ```
-    nel file `resources/js/app.js` per istruire Vite e Blade affinché processino correttamente i nostri asset
-11. Aggiungere la riga `package-lock.json` nel file `.gitignore` che si trova nella `root` del progetto per evitare di pubblicarlo nella repo (è un file che viene generato ed aggiornato automaticamente dopo l'esecuzione del comando `npm i`)
-12. Installare `Bootstrap`:
-    1. Eseguire il comando `npm i --save bootstrap @popperjs/core` per installare sia la parte `CSS` che la parte `JS` di `Bootstrap`
-    2. Aggiungere la riga `const path = require('path');` nel file `vite.config.js` subito prima della riga `export default defineConfig({`
-    3. Aggiungere la riga `'~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap')` nell'oggetto `resolve.alias` nel file `vite.config.js`
-    4. Aggiungere la riga `@import "~bootstrap/scss/bootstrap";` in alto nel file `resources/scss/app.scss` per importare la parte `CSS` di Bootstrap
-    5. Aggiungere la riga `import * as bootstrap from 'bootstrap';` nel file `resources/js/app.js` per importare la parte `JS` di Bootstrap
-
-### Passi da effettuare per UTILIZZARE questo template
-1. Aprire questa repository su github e cliccare sul pulsante `Use this template > Create a new repository`
-2. Clonare la repository appena creata su `VS Code`
-3. Aprire il `terminale`
-4. Copiare il file `.env.example` e rinominarlo in `.env`
-5. Eseguire il comando `composer install`
-6. Eseguire il comando `php artisan key:generate`
-7. Eseguire il comando `npm i` o `npm install`
-8. Aprire un secondo `terminale`
-9. In uno dei due terminali, eseguire il comando `php artisan serve`. Nell'altro, `npm run dev`
-
-### Creare una template repository
-1. Aprire la repo su github
-2. Cliccare su `Settings`
-3. Spuntare la casella `Template repository`
-
-### Alternativa: pacchetto Composer
-In alternativa, è stato sviluppato il pacchetto laravel-9-preset da [@fabiopacificom](https://github.com/fabiopacificicom) che ci evita di effettuare tutti i passaggi.
-
-> Link: 
->
-> https://github.com/fabiopacificicom/laravel-9-preset
-> 
-## Realizzare la CRUD di una risorsa
-
-### Creare il Model
+## Creare il Resource Model
 
 questo comando genera Model e Resource Controller;
 
@@ -97,7 +8,7 @@ questo comando genera Model e Resource Controller;
 php artisan make:model Pasta -r
 ```
 
-### Creare la Migration
+## Creare la Migration
 
 questo comando genera la Migration
 
@@ -157,7 +68,7 @@ A questo punto possiamo lanciare la Migration con il comando
 php artisan migrate
 ```
 
-### Creare il Seeder
+## Creare il Seeder
 
 questo comando creerà il Seeder:
 
@@ -221,7 +132,7 @@ Possiamo poi popolare il DB col comando:
 php artisan db:seed
 ```
 
-### Gestire le rotte
+## Gestire le rotte
 
 dobbiamo importare il controller che si occuperà di gestire la risorsa nel file `web.php`
 
@@ -239,7 +150,7 @@ poi usando il metodo statico resource della classe `Route` generiamo tutte le ro
 Route::resource('pastas', PastaController::class);
 ```
 
-### Il Resource Controller
+## Il Resource Controller
 
 
 Usando il parametro `-r` nella creazione del modello, questo risulterà già importato nel controller. Diversamente dovremo accertarci che lo sia
@@ -250,11 +161,11 @@ Usando il parametro `-r` nella creazione del modello, questo risulterà già imp
 use App\Models\Pasta;
 ```
 
-#### R - READ
+### R - READ
 
 La lettura delle risorse dal Database
 
-##### index - La lista
+#### index - La lista
 
 nel metodo index del controller recupereremo i risultati con il metodo statico del modello `::all()`, oppure filtrando con `::where(...)->get()`.
 
@@ -314,7 +225,7 @@ Aggiungeremo man mano i link alle altre rotte.
 {{ $pastas->links('pagination::bootstrap-5') }}
 ```
 
-##### show - Il dettaglio
+#### show - Il dettaglio
 
 Andiamo a creare il dettaglio della singola risorsa. Nel metodo `show` del controller:
 
@@ -369,11 +280,9 @@ infine aggiungiamo il link al dettaglio nella cella "actions" della lista
 </table>
 ```
 
-#### C - CREATE
+### C - CREATE
 
-L'inserimento di nuovi records nel database
-
-##### create - Il form
+#### create - Il form
 
 La rotta `create` dovrà restituire la vista del form
 
@@ -456,7 +365,7 @@ infine aggiungiamo il link al form di creazione vicino alla lista
 ```
 
 
-##### store - Il salvataggio
+#### store - Il salvataggio
 
 Predisponiamo il modello a ricevere dati da form con la variabile d'istanza protetta `$fillable`
 
@@ -493,11 +402,9 @@ public function store(Request $request)
 }
 ```
 
-#### E - EDIT
+### E - EDIT
 
-La modifica dei records nel database
-
-##### edit - Il form
+#### edit - Il form
 
 La rotta `edit` dovrà restituire la vista del form, inviandole l'istanza da modificare ricevuta tramite dependency injection
 
@@ -615,8 +522,7 @@ infine aggiungiamo il link al form di modifica nella cella "actions" della lista
     </tbody>
 </table>
 ```
-
-##### update - La modifica
+#### update - La modifica
 
 Nel metodo `update()` gestiremo la logica della modifica reindirizzando poi l'utente alla rotta `show()`
 
@@ -638,11 +544,9 @@ public function update(Request $request, Pasta $pasta)
 }
 ```
 
-#### D - DELETE
+### D - DELETE
 
-L'eliminazione dei records nel database
-
-##### delete - Button e modale
+#### delete - Button e modale
 
 Dobbiamo aggiungere il `button` per l'eliminazione della risorsa. Attenzione: il click del `button` dovrà far apparire una modale di conferma dell'operazione prima di cancellare effettivamente il record.
 
@@ -716,7 +620,7 @@ Il pulsante "Elimina" in ogni modale dovrà essere all'interno di un vero e prop
 @endforeach
 ```
 
-##### destroy - L'eliminazione
+#### destroy - L'eliminazione
 
 Non resta che gestire la logica dell'eliminazione nel controller
 
@@ -736,9 +640,9 @@ public function destroy(Pasta $pasta)
 }
 ```
 
-### La validazione
+## La validazione
 
-#### Il metodo `validate`
+### Il metodo `validate`
 
 Innanzitutto bisogna importare il validator nel controller:
 
@@ -870,7 +774,7 @@ private function validation($data, $id = null) {
 }
 ```
 
-#### Validazione nel controller
+### Validazione nel controller
 
 Nel metodo store:
 
@@ -896,7 +800,7 @@ public function update(Request $request, Pasta $pasta)
 }
 ```
 
-#### Validazione nelle viste
+### Validazione nelle viste
 
 Possiamo in via generica stampare tutti gli errori di validazione con
 
@@ -918,7 +822,7 @@ Possiamo in via generica stampare tutti gli errori di validazione con
 
 Vanno però anche, per ognuno degli input, specificati i valori `old` (ossia quelli dell'inserimento la cui validazione è fallita) nei form. 
 
-##### create
+#### create
 
 Per ogni input:
 
@@ -941,7 +845,7 @@ Per ogni input:
 @enderror
 ```
 
-##### edit
+#### edit
 
 Per ogni input vale quanto descritto precedentemente nella sezione `create`.
 A differenza del `create` possiamo sfruttare il null coalescent operator per i valori di default degli input:
