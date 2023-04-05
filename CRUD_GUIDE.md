@@ -10,7 +10,7 @@
     - [C - CREATE](#c---create)
       - [create - Form](#create---form)
       - [store - Inserimento](#store---inserimento)
-    - [E - EDIT](#e---edit)
+    - [U - UPDATE](#u---update)
       - [edit - Form](#edit---form)
       - [update - Modifica](#update---modifica)
     - [D - DELETE](#d---delete)
@@ -425,7 +425,7 @@ public function store(Request $request)
 }
 ```
 
-### E - EDIT
+### U - Update
 
 #### edit - Form
 
