@@ -1,3 +1,26 @@
+- [REALIZZARE UNA CRUD](#realizzare-una-crud)
+  - [Creare il Resource Model](#creare-il-resource-model)
+  - [Creare la Migration](#creare-la-migration)
+  - [Creare il Seeder](#creare-il-seeder)
+  - [Gestire le rotte](#gestire-le-rotte)
+  - [Il Resource Controller](#il-resource-controller)
+    - [R - READ](#r---read)
+      - [index - Lista](#index---lista)
+      - [show - Dettaglio](#show---dettaglio)
+    - [C - CREATE](#c---create)
+      - [create - Form](#create---form)
+      - [store - Inserimento](#store---inserimento)
+    - [E - EDIT](#e---edit)
+      - [edit - Form](#edit---form)
+      - [update - Modifica](#update---modifica)
+    - [D - DELETE](#d---delete)
+      - [delete - Form e modale](#delete---form-e-modale)
+      - [destroy - Eliminazione](#destroy---eliminazione)
+  - [La validazione](#la-validazione)
+    - [Il metodo validate](#il-metodo-validate)
+    - [Validazione nel controller](#validazione-nel-controller)
+    - [Validazione nelle viste](#il-metodo-validate)
+
 # REALIZZARE UNA CRUD
 
 ## Creare il Resource Model
@@ -165,7 +188,7 @@ use App\Models\Pasta;
 
 La lettura delle risorse dal Database
 
-#### index - La lista
+#### index - Lista
 
 nel metodo index del controller recupereremo i risultati con il metodo statico del modello `::all()`, oppure filtrando con `::where(...)->get()`.
 
@@ -225,7 +248,7 @@ Aggiungeremo man mano i link alle altre rotte.
 {{ $pastas->links('pagination::bootstrap-5') }}
 ```
 
-#### show - Il dettaglio
+#### show - Dettaglio
 
 Va creato il dettaglio della singola risorsa. Il metodo `show` del controller dovrà ritornare il form:
 
@@ -282,7 +305,7 @@ infine va aggiunto il link al dettaglio nella cella "actions" della lista
 
 ### C - CREATE
 
-#### create - Il form
+#### create - Form
 
 La rotta `create` dovrà restituire la vista del form
 
@@ -365,7 +388,7 @@ In ultimo va creato il link al form di creazione
 ```
 
 
-#### store - Il salvataggio
+#### store - Inserimento
 
 Va predisposto il modello a ricevere dati da form con la variabile d'istanza protetta `$fillable`
 
@@ -404,7 +427,7 @@ public function store(Request $request)
 
 ### E - EDIT
 
-#### edit - Il form
+#### edit - Form
 
 La rotta `edit` dovrà restituire la vista del form, inviandole l'istanza da modificare ricevuta tramite dependency injection
 
@@ -522,7 +545,8 @@ infine va creato il link al form di modifica nella cella "actions" della lista
     </tbody>
 </table>
 ```
-#### update - La modifica
+
+#### update - Modifica
 
 Nel metodo `update()` gestiremo la logica della modifica reindirizzando poi l'utente alla rotta `show()`
 
@@ -546,7 +570,7 @@ public function update(Request $request, Pasta $pasta)
 
 ### D - DELETE
 
-#### delete - Button e modale
+#### delete - Form e modale
 
 Bisogna aggiungere il bottone per l'eliminazione della risorsa. Attenzione: il click del `button` dovrà far apparire una modale di conferma dell'operazione prima di cancellare effettivamente il record.
 
@@ -620,7 +644,7 @@ Il pulsante "Elimina" in ogni modale dovrà essere all'interno di un vero e prop
 @endforeach
 ```
 
-#### destroy - L'eliminazione
+#### destroy - Eliminazione
 
 Non resta che gestire la logica dell'eliminazione nel controller
 

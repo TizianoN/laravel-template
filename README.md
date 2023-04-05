@@ -1,7 +1,36 @@
 <div align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a>
 <h1><strong style="color: #EF3B2D;">9 + BOOTSTRAP TEMPLATE</strong></h1></div>
 
-# Laravel 9 + Bootstrap Template
+- [Laravel 9 - Bootstrap Template](#laravel-9---bootstrap-template)
+  - [About this template](#about-this-template)
+    - [Passi da effettuare per RIPRODURRE questo template](#passi-da-effettuare-per-riprodurre-questo-template)
+    - [Passi da effettuare per UTILIZZARE questo template](#passi-da-effettuare-per-utilizzare-questo-template)
+    - [Creare una template repository](#creare-una-template-repository)
+    - [Alternativa - pacchetto Composer](#alternativa---pacchetto-composer)
+  - [REALIZZARE UNA CRUD](#realizzare-una-crud)
+    - [Creare il Resource Model](#creare-il-resource-model)
+    - [Creare la Migration](#creare-la-migration)
+    - [Creare il Seeder](#creare-il-seeder)
+    - [Gestire le rotte](#gestire-le-rotte)
+    - [Il Resource Controller](#il-resource-controller)
+      - [R - READ](#r---read)
+        - [index - Lista](#index---lista)
+        - [show - Dettaglio](#show---dettaglio)
+      - [C - CREATE](#c---create)
+        - [create - Form](#create---form)
+        - [store - Inserimento](#store---inserimento)
+      - [E - EDIT](#e---edit)
+        - [edit - Form](#edit---form)
+        - [update - Modifica](#update---modifica)
+      - [D - DELETE](#d---delete)
+        - [delete - Form e modale](#delete---form-e-modale)
+        - [destroy - Eliminazione](#destroy---eliminazione)
+    - [La validazione](#la-validazione)
+      - [Il metodo validate](#il-metodo-validate)
+      - [Validazione nel controller](#validazione-nel-controller)
+      - [Validazione nelle viste](#il-metodo-validate)
+
+# Laravel 9 - Bootstrap Template
 Questa repo template contiene una versione modificata del pacchetto `laravel/laravel`. Tale versione differisce nei seguenti punti:
 
 - `PostCSS` è stato rimosso
@@ -80,13 +109,14 @@ Questa repo template contiene una versione modificata del pacchetto `laravel/lar
 2. Cliccare su `Settings`
 3. Spuntare la casella `Template repository`
 
-### Alternativa: pacchetto Composer
+### Alternativa - pacchetto Composer
 In alternativa, è stato sviluppato il pacchetto laravel-9-preset da [@fabiopacificom](https://github.com/fabiopacificicom) che ci evita di effettuare tutti i passaggi.
 
 > Link: 
 >
 > https://github.com/fabiopacificicom/laravel-9-preset
 > 
+
 ## Realizzare la CRUD di una risorsa
 
 ### Creare il Model
