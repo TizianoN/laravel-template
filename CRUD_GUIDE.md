@@ -191,7 +191,7 @@ A questo punto stiamo ritornando i dati al template `index.blade.php` nella cart
 
 Aggiungeremo man mano i link alle altre rotte.
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 <table class="table">
@@ -246,7 +246,7 @@ public function show(Pasta $pasta)
 
 e la sua vista:
 
-```html
+```blade
 {{-- resources/views/pastas/show.blade.php --}}
 
 <strong>Nome: </strong> {{ $pasta->name }} <br />
@@ -259,7 +259,7 @@ e la sua vista:
 
 infine aggiungiamo il link al dettaglio nella cella "actions" della lista
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 <table class="table">
@@ -307,7 +307,7 @@ Il form dovrà:
 -   la sua action dovrà puntare alla rotta dello store
 -   contenere la direttiva `@csrf` per generare il token di sicurezza
 
-```html
+```blade
 {{-- resources/views/pastas/create.blade.php --}}
 
 <form action="{{ route('pastas.store') }}" method="POST">
@@ -354,7 +354,7 @@ Il form dovrà:
 
 infine aggiungiamo il link al form di creazione vicino alla lista
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 <a href="{{ route('pastas.create') }}" role="button" class="btn btn-primary">Crea pasta</a>
@@ -431,7 +431,7 @@ Il form dovrà:
 -   contenere la direttiva `@csrf` per generare il token di sicurezza
 -   gli input dovranno contenere i valori originali dell'istanza
 
-```html
+```blade
 {{-- resources/views/pastas/update.blade.php --}}
 
 <form action="{{ route('pastas.update') }}" method="POST">
@@ -500,7 +500,7 @@ Il form dovrà:
 
 infine aggiungiamo il link al form di modifica nella cella "actions" della lista
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 <table class="table">
@@ -552,7 +552,7 @@ Dobbiamo aggiungere il `button` per l'eliminazione della risorsa. Attenzione: il
 
 NB: l'attributo `data-bs-target` collegherà il `button` alla modale con `id` corrispondente
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 <table class="table">
@@ -586,7 +586,7 @@ Il pulsante "Elimina" in ogni modale dovrà essere all'interno di un vero e prop
 -   la direttiva `@method('DELETE')`
 -   la direttiva `@csrf` per generare il token di sicurezza
 
-```html
+```blade
 {{-- resources/views/pastas/index.blade.php --}}
 
 @foreach ($pastas as $pasta)
@@ -804,7 +804,7 @@ public function update(Request $request, Pasta $pasta)
 
 Possiamo in via generica stampare tutti gli errori di validazione con
 
-```html
+```blade
 {{-- resources/views/pastas/create.blade.php --}}
 {{-- resources/views/pastas/edit.blade.php --}}
 
@@ -830,7 +830,7 @@ Per ogni input:
 - aggiungiamo il valore `old` come default
 - aggiungiamo il messaggio di errore nel `div.invalid-feedback` successivo all'input (la variabile `$message` è generata automaticamente dalla direttiva `@error`)
 
-```html
+```blade
 <input 
   type="text" 
   class="form-control @error('number') is-invalid @enderror" 
@@ -850,7 +850,7 @@ Per ogni input:
 Per ogni input vale quanto descritto precedentemente nella sezione `create`.
 A differenza del `create` possiamo sfruttare il null coalescent operator per i valori di default degli input:
 
-```html
+```blade
 <input 
   type="text" 
   class="form-control @error('number') is-invalid @enderror" 
