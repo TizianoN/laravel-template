@@ -46,7 +46,7 @@ public function up()
 }
 ```
 
-Dobbiamo assicurarci che venga cancellata nella funzione `down`, nella quale deve sempre avvenire l'inverso della funzione `up`
+Bisogna assicurarsi che venga cancellata nella funzione `down`, nella quale deve sempre avvenire l'inverso della funzione `up`
 
 ```php
 // database/migrations/xxxx_xx_xx_xxxxxx_create_pastas_table.php
@@ -62,7 +62,7 @@ public function down()
 }
 ```
 
-A questo punto possiamo lanciare la Migration con il comando
+A questo punto è possibile lanciare la Migration con il comando
 
 ```
 php artisan migrate
@@ -76,8 +76,8 @@ questo comando creerà il Seeder:
 php artisan make:seeder PastaSeeder
 ```
 
-Nel Seeder possiamo importare i dati da un array o generarli con Faker.
-Assicuriamoci di aver importato Faker ed il modello da seeddare
+Nel Seeder possibile importare i dati da un array o generarli con Faker.
+Bisogna assicurarsi di aver importato Faker ed il modello da seeddare
 
 ```php
 // database/seeders/PastaSeeder.php
@@ -126,7 +126,7 @@ public function run()
 }
 ```
 
-Possiamo poi popolare il DB col comando:
+Si può poi popolare il DB col comando:
 
 ```
 php artisan db:seed
@@ -134,7 +134,7 @@ php artisan db:seed
 
 ## Gestire le rotte
 
-dobbiamo importare il controller che si occuperà di gestire la risorsa nel file `web.php`
+Bisogna importare il controller che si occuperà di gestire la risorsa nel file `web.php`
 
 ```php
 // routes/web.php
@@ -142,7 +142,7 @@ dobbiamo importare il controller che si occuperà di gestire la risorsa nel file
 use App\Http\Controllers\PastaController;
 ```
 
-poi usando il metodo statico resource della classe `Route` generiamo tutte le rotte della CRUD e le associamo al controller preposto alla gestione della risorsa
+poi usando il metodo statico `resource` della classe `Route` verranno generate tutte le rotte della CRUD che andranno associate al controller preposto alla gestione della risorsa
 
 ```php
 // routes/web.php
@@ -169,7 +169,7 @@ La lettura delle risorse dal Database
 
 nel metodo index del controller recupereremo i risultati con il metodo statico del modello `::all()`, oppure filtrando con `::where(...)->get()`.
 
-Se avessimo bisogno della paginazione, possiamo sostiuire `all()` o `get()` con il metodo `paginate(n_items_per_page)`
+Se ci fosse bisogno della paginazione, è possibile sostiuire `all()` o `get()` con il metodo `paginate(n_items_per_page)`
 
 ```php
 // App/Http/Controllers/PastaController.php
@@ -187,7 +187,7 @@ public function index()
 
 ```
 
-A questo punto stiamo ritornando i dati al template `index.blade.php` nella cartella della risorsa. Dobbiamo perciò crearlo.
+A questo punto vengono ritornando i dati al template `index.blade.php` nella cartella della risorsa. Va perciò creata.
 
 Aggiungeremo man mano i link alle altre rotte.
 
@@ -227,7 +227,7 @@ Aggiungeremo man mano i link alle altre rotte.
 
 #### show - Il dettaglio
 
-Andiamo a creare il dettaglio della singola risorsa. Nel metodo `show` del controller:
+Va creato il dettaglio della singola risorsa. Il metodo `show` del controller dovrà ritornare il form:
 
 ```php
 // App/Http/Controllers/PastaController.php
@@ -257,7 +257,7 @@ e la sua vista:
 <strong>Descrizione:</strong> {{ $pasta->description }} <br />
 ```
 
-infine aggiungiamo il link al dettaglio nella cella "actions" della lista
+infine va aggiunto il link al dettaglio nella cella "actions" della lista
 
 ```blade
 {{-- resources/views/pastas/index.blade.php --}}
@@ -352,7 +352,7 @@ Il form dovrà:
 </form>
 ```
 
-infine aggiungiamo il link al form di creazione vicino alla lista
+In ultimo va creato il link al form di creazione
 
 ```blade
 {{-- resources/views/pastas/index.blade.php --}}
@@ -367,7 +367,7 @@ infine aggiungiamo il link al form di creazione vicino alla lista
 
 #### store - Il salvataggio
 
-Predisponiamo il modello a ricevere dati da form con la variabile d'istanza protetta `$fillable`
+Va predisposto il modello a ricevere dati da form con la variabile d'istanza protetta `$fillable`
 
 ```php
 // App\Models\Pasta.php;
@@ -498,7 +498,7 @@ Il form dovrà:
 </form>
 ```
 
-infine aggiungiamo il link al form di modifica nella cella "actions" della lista
+infine va creato il link al form di modifica nella cella "actions" della lista
 
 ```blade
 {{-- resources/views/pastas/index.blade.php --}}
@@ -548,7 +548,7 @@ public function update(Request $request, Pasta $pasta)
 
 #### delete - Button e modale
 
-Dobbiamo aggiungere il `button` per l'eliminazione della risorsa. Attenzione: il click del `button` dovrà far apparire una modale di conferma dell'operazione prima di cancellare effettivamente il record.
+Bisogna aggiungere il bottone per l'eliminazione della risorsa. Attenzione: il click del `button` dovrà far apparire una modale di conferma dell'operazione prima di cancellare effettivamente il record.
 
 NB: l'attributo `data-bs-target` collegherà il `button` alla modale con `id` corrispondente
 
@@ -652,7 +652,7 @@ Innanzitutto bisogna importare il validator nel controller:
 use Illuminate\Support\Facades\Validator;
 ```
 
-Poi creiamo un metodo privato per la logica di validazione in fondo al controller. Nel metodo dobbiamo ricevere i dati da validare
+Di seguito va creato un metodo privato per la logica di validazione in fondo al controller. Nel metodo è necessario ricevere i dati da validare
 
 ```php
 // App/Http/Controllers/PastaController.php
@@ -802,7 +802,7 @@ public function update(Request $request, Pasta $pasta)
 
 ### Validazione nelle viste
 
-Possiamo in via generica stampare tutti gli errori di validazione con
+E' possibile stampare in via generica tutti gli errori di validazione:
 
 ```blade
 {{-- resources/views/pastas/create.blade.php --}}
@@ -820,15 +820,15 @@ Possiamo in via generica stampare tutti gli errori di validazione con
 @endif
 ```
 
-Vanno però anche, per ognuno degli input, specificati i valori `old` (ossia quelli dell'inserimento la cui validazione è fallita) nei form. 
+tuttavia vanno specificati i valori `old` (ossia quelli dell'inserimento la cui validazione è fallita) per ognuno degli input dei form. 
 
 #### create
 
 Per ogni input:
 
-- abbiamo a disposizione la direttiva `@error('field_name')` per verificare la validazione dei singoli input. possiamo usarla per stampare la classe `is-invalid` di BS
-- aggiungiamo il valore `old` come default
-- aggiungiamo il messaggio di errore nel `div.invalid-feedback` successivo all'input (la variabile `$message` è generata automaticamente dalla direttiva `@error`)
+- La direttiva `@error('field_name')` permette di verificare la validazione dei singoli input. Può essere usata per stampare la classe `is-invalid` di BS
+- Va aggiunto il valore `old` come default
+- Va aggiunto il messaggio di errore nel `div.invalid-feedback` successivo all'input (la variabile `$message` è generata automaticamente dalla direttiva `@error`)
 
 ```blade
 <input 
