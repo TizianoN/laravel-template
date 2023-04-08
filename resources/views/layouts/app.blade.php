@@ -17,7 +17,7 @@
 <body>
   <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+      <a class="navbar-brand d-flex align-items-center" href="{{ route('homepage') }}">
         <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 150px">
           <g clip-path="url(#clip0)" fill="#EF3B2D">
             <path
@@ -35,7 +35,7 @@
         <!-- Left Side Of Navbar -->
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+            <a class="nav-link" href="{{ route('homepage') }}">{{ __('Home') }}</a>
           </li>
         </ul>
 
@@ -59,11 +59,11 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right dropdown-menu-dark">
-                <a class="dropdown-item" href="{{ url('dashboard') }}">{{ __('Dashboard') }}</a>
-                <a class="dropdown-item" href="{{ url('profile') }}">{{ __('Profile') }}</a>
+                <a class="dropdown-item" href="{{ route('admin.dashboard') }}">{{ __('Dashboard') }}</a>
+                <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
                 <a class="dropdown-item" href="{{ route('logout') }}"
                   onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                  document.getElementById('logout-form').submit();">
                   {{ __('Logout') }}
                 </a>
 
@@ -78,8 +78,10 @@
     </div>
   </nav>
 
-  <main class="">
-    @yield('content')
+  <main>
+    <div class="py-5">
+      @yield('content')
+    </div>
   </main>
 </body>
 

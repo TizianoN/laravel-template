@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Guest\HomeController as GuestHomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,18 +16,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// # Guest route
+Route::get( '/',    [GuestHomeController::class,    'homepage'  ])->name('homepage');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// # Protected routes
+Route::middleware('auth')
+    ->prefix('admin')   // * routes url start with "/admin." 
+    ->name('admin.')    // * routes name start with "admin." 
+    ->group(
+        function () {
+            Route::get( '/dashboard',   [AdminHomeController::class,    'dashboard' ])->name('dashboard');
+        }
+    );
 
-Route::middleware('auth')->group(function () {
-    Route::get(     '/profile', [ProfileController::class, 'edit'       ])->name('profile.edit');
-    Route::patch(   '/profile', [ProfileController::class, 'update'     ])->name('profile.update');
-    Route::delete(  '/profile', [ProfileController::class, 'destroy'    ])->name('profile.destroy');
-});
+// ! Generated routes, do not touch
+// # Protected profile's routes
+Route::middleware('auth')
+    ->prefix('profile')      // * routes url start with "/profile." 
+    ->name('profile.')       // * routes name start with "profile." 
+    ->group(
+        function () {
+            Route::get(     '/', [ProfileController::class, 'edit'      ])->name('edit');
+            Route::patch(   '/', [ProfileController::class, 'update'    ])->name('update');
+            Route::delete(  '/', [ProfileController::class, 'destroy'   ])->name('destroy');
+        }
+    );
 
 require __DIR__ . '/auth.php';
